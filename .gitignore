@@ -1,0 +1,13 @@
+/.direnv/
+/result
+.aux
+.fdb_latexmk
+.fls
+.gz
+.log
+.out
+.pdf
+/*.aux
+/*.log
+/*.out
+/*.pdf
