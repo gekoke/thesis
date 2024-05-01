@@ -1,4 +1,4 @@
-## Proposal
+## BSc Thesis 2024
 
 ### Building
 
