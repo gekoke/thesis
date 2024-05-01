@@ -1,26 +1,30 @@
-\documentclass[11pt,titlepage]{article}
+\documentclass[12pt, a4paper]{report}
 
-\usepackage[estonian]{babel}
-\usepackage{hyperref}
+\usepackage{includes}
+\usepackage{globals}
+
+\hypersetup{
+    pdfauthor={Gregor Grigorjan, Juss Põldsam},
+    pdfsubject={\thesisTitle},
+    pdfkeywords={}
+}
 
 \begin{document}
 
-\begin{titlepage}
+\input{preamble/main.tex}
 
-\author{Juss Põldsam, Gregor Grigorjan\\{\small Juhendaja: Ago Luberg}}
-\date{\today}
-\title{Pealkiri}
-\hypersetup{
- pdfauthor={Juss Põldsam, Gregor Grigorjan},
- pdftitle={},
- pdfkeywords={},
- pdfsubject={},
- pdfcreator={}, 
- pdflang={Estonian}}
+\input{chapters/main.tex}
 
-\maketitle
+\pagebreak
+\phantomsection{}
+\addcontentsline{toc}{chapter}{References}
+\printbibliography[title=Kasutatud kirjandus]
 
-\end{titlepage}
+\pagebreak
+\phantomsection{}
+\appendix
+\renewcommand{\thechapter}{\arabic{chapter}}
+
+\input{appendices/main.tex}
 
 \end{document}
-

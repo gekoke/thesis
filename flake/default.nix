@@ -7,7 +7,7 @@ flake-parts.lib.mkFlake { inherit inputs; } {
 
   imports = [
     ./dev-shells.nix
-    ./packages.nix
+    ./packages
     ./overlays.nix
     {
       perSystem = { system, ... }: {

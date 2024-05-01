@@ -5,24 +5,26 @@ _:
       rec {
         default = thesis;
 
-        texLiveEnvironment = pkgs.texliveBasic.withPackages (p: [
-          p.babel-estonian
-          p.etoolbox
-        ]);
+        texLiveEnvironment = pkgs.texliveBasic.withPackages (import ./tex-packages.nix);
 
-        thesis = pkgs.stdenv.mkDerivation {
+        thesis = pkgs.stdenvNoCC.mkDerivation {
           name = "thesis";
-          src = ../src;
+          src = ../../src;
 
           nativeBuildInputs = [
+            pkgs.biber
             texLiveEnvironment
           ];
 
           nativeCheckInputs = [
             (pkgs.hunspellWithDicts [ pkgs.hunspellDicts.et_EE ])
+            (pkgs.texliveMinimal.withPackages (p: [ p.detex ]))
           ];
 
           buildPhase = ''
+            pdflatex thesis.tex
+            biber thesis
+            pdflatex thesis.tex
             pdflatex thesis.tex
           '';
 
@@ -32,7 +34,8 @@ _:
             export LOCALE_ARCHIVE="${pkgs.glibcLocales}/lib/locale/locale-archive"
             export LANG="en_US.UTF-8"
 
-            misspellings=$(hunspell -d et_EE -p spellcheck-allow.txt -t -l thesis.tex)
+            detex thesis.tex > thesis_content.txt
+            misspellings=$(hunspell -d et_EE -p spellcheck-ignore.txt -l thesis_content.txt)
 
             if [[ $misspellings ]]; then
                 echo "Spellcheck failed, misspelled words:"

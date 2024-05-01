@@ -1,0 +1,35 @@
+\include{preamble/title_page.tex}
+
+\setcounter{page}{0}
+\pagenumbering{arabic}  % From here on, start the "real" page numbering, from 1, with normal digits
+
+\normalsize
+
+\chapter*{\centerline{Autorideklaratsioon}}\label{chapter:declaration-of-originality}
+\input{preamble/declaration_of_originality.tex}
+\pagebreak
+
+\chapter*{Annotatsioon}\label{chapter:abstract}
+\input{preamble/abstract.tex}
+\pagebreak
+
+\chapter*{\begin{center}Abstract\\\large\thesisTitleEnglish\end{center}}\label{chapter:abstract-english}
+\input{preamble/abstract_english.tex}
+\pagebreak
+
+\chapter*{\centerline{Lühendite ja mõistete sõnastik}}\label{chapter:terminology}
+\input{preamble/terminology.tex}
+\pagebreak
+
+\phantomsection{}
+\setcounter{tocdepth}{2}
+\renewcommand{\contentsname}{Sisukord}
+\tableofcontents
+
+\clearpage \phantomsection{}
+\setcounter{figure}{0}
+\listoffigures
+
+\clearpage \phantomsection{}
+\listoftables
+

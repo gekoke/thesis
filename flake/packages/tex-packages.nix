@@ -1,0 +1,37 @@
+p: [
+  p.amsmath
+  p.babel-estonian
+  p.biblatex
+  p.biblatex
+  p.blindtext
+  p.caption
+  p.chngcntr
+  p.collection-fontsrecommended
+  p.csquotes
+  p.cyrillic
+  p.enumitem
+  p.etoolbox
+  p.float
+  p.fmtcount
+  p.footmisc
+  p.forloop
+  p.geometry
+  p.hyphenat
+  p.listings
+  p.listofitems
+  p.microtype
+  p.multirow
+  p.needspace
+  p.readarray
+  p.setspace
+  p.times
+  p.titlesec
+  p.tocloft
+  p.todonotes
+  p.totcount
+  p.verbatimbox
+  p.wrapfig
+  p.xcolor
+  p.xkeyval
+]
+
