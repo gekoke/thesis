@@ -6,8 +6,8 @@ _:
         default = thesis;
 
         texLiveEnvironment = pkgs.texliveBasic.withPackages (p: [
-          p.etoolbox
           p.babel-estonian
+          p.etoolbox
         ]);
 
         thesis = pkgs.stdenv.mkDerivation {
