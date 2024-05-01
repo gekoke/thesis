@@ -1,4 +1,5 @@
 { flake-parts
+, self
 , ...
 } @ inputs:
 flake-parts.lib.mkFlake { inherit inputs; } {
@@ -7,5 +8,15 @@ flake-parts.lib.mkFlake { inherit inputs; } {
   imports = [
     ./dev-shells.nix
     ./packages.nix
+    ./overlays.nix
+    {
+      perSystem = { system, ... }: {
+        _module.args.pkgs = import inputs.nixpkgs {
+          inherit system;
+          overlays = [ self.overlays.hunspellEstonianDict ];
+        };
+      };
+    }
   ];
 }
+

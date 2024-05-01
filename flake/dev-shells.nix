@@ -1,10 +1,11 @@
-_:
+{ self, ... }:
 {
-  perSystem = { pkgs, ... }: {
+  perSystem = { pkgs, system, ... }: {
     devShells = {
       default = pkgs.mkShellNoCC {
         packages = [
-          pkgs.texliveFull
+          self.packages.${system}.texLiveEnvironment
+          (pkgs.hunspellWithDicts [ pkgs.hunspellDicts.et_EE ])
         ];
       };
     };

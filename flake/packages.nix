@@ -1,27 +1,52 @@
 _:
 {
-  perSystem = { pkgs, system, ... }: {
-    packages = rec {
-      default = thesis;
+  perSystem = { pkgs, ... }: {
+    packages =
+      rec {
+        default = thesis;
 
-      thesis = pkgs.stdenvNoCC.mkDerivation {
-        name = "thesis";
-        src = ../.;
+        texLiveEnvironment = pkgs.texliveBasic.withPackages (p: [
+          p.etoolbox
+          p.babel-estonian
+        ]);
 
-        nativeBuildInputs = [
-          pkgs.texliveFull
-        ];
+        thesis = pkgs.stdenv.mkDerivation {
+          name = "thesis";
+          src = ../.;
 
-        buildPhase = ''
-          pdflatex thesis.tex
-        '';
-        
-        installPhase = ''
-          mkdir -p $out/
-          cp thesis.pdf $out/
-        '';
+          nativeBuildInputs = [
+            texLiveEnvironment
+          ];
+
+          nativeCheckInputs = [
+            (pkgs.hunspellWithDicts [ pkgs.hunspellDicts.et_EE ])
+          ];
+
+          buildPhase = ''
+            pdflatex thesis.tex
+          '';
+
+          doCheck = true;
+
+          checkPhase = ''
+            export LOCALE_ARCHIVE="${pkgs.glibcLocales}/lib/locale/locale-archive"
+            export LANG="en_US.UTF-8"
+
+            misspellings=$(hunspell -d et_EE -p spellcheck-allow.txt -t -l thesis.tex)
+
+            if [[ $misspellings ]]; then
+                echo "Spellcheck failed, misspelled words:"
+                echo "$misspellings"
+                exit 1
+            fi
+          '';
+
+          installPhase = ''
+            mkdir -p $out
+            cp thesis.pdf $out
+          '';
+        };
       };
-    };
   };
 }
 
