@@ -12,7 +12,7 @@ _:
 
         thesis = pkgs.stdenv.mkDerivation {
           name = "thesis";
-          src = ../.;
+          src = ../src;
 
           nativeBuildInputs = [
             texLiveEnvironment
