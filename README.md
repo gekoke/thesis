@@ -9,5 +9,6 @@ pdflatex thesis.tex
 
 #### With Nix
 ```sh
-nix build .#thesis
+nix build
 ```
+

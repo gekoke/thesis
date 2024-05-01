@@ -1,7 +1,9 @@
 _:
 {
   perSystem = { pkgs, system, ... }: {
-    packages = {
+    packages = rec {
+      default = thesis;
+
       thesis = pkgs.stdenvNoCC.mkDerivation {
         name = "thesis";
         src = ../.;
