@@ -1,4 +1,4 @@
-misspellings=$(find . -name "*.tex" | xargs hunspell -d et_EE,en_US -p ./src/spellcheck-ignore.txt -l)
+misspellings=$(find . -name "*.tex" | xargs hunspell -d et_EE,en_US -p spellcheck-ignore.txt -l)
 
 if [[ $misspellings ]]; then
     echo "Spellcheck failed, misspelled words:"
