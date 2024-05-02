@@ -4,4 +4,7 @@ if [[ $misspellings ]]; then
     echo "Spellcheck failed, misspelled words:"
     echo "$misspellings"
     exit 1
+else
+    echo "No spelling errors found"
 fi
+
