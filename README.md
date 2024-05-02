@@ -13,3 +13,15 @@ just build
 nix build
 ```
 
+### Spellcheck
+
+#### With direnv
+```sh
+direnv allow
+just spell
+```
+
+#### With Nix
+```sh
+nix build
+```

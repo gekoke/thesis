@@ -9,10 +9,11 @@ _:
 
         thesis = pkgs.stdenvNoCC.mkDerivation {
           name = "thesis";
-          src = ../../src;
+          src = ../../.;
 
           nativeBuildInputs = [
             pkgs.biber
+            pkgs.just
             texLiveEnvironment
           ];
 
@@ -23,31 +24,19 @@ _:
             ])
           ];
 
-          buildPhase = ''
-            pdflatex thesis.tex
-            biber thesis
-            pdflatex thesis.tex
-            pdflatex thesis.tex
-          '';
+          buildPhase = "just build";
 
           doCheck = true;
 
           checkPhase = ''
             export LOCALE_ARCHIVE="${pkgs.glibcLocales}/lib/locale/locale-archive"
             export LANG="en_US.UTF-8"
-
-            misspellings=$(find . -name "*.tex" | xargs hunspell -d et_EE,en_US -p spellcheck-ignore.txt -l)
-
-            if [[ $misspellings ]]; then
-                echo "Spellcheck failed, misspelled words:"
-                echo "$misspellings"
-                exit 1
-            fi
+            just spell
           '';
 
           installPhase = ''
             mkdir -p $out
-            cp thesis.pdf $out
+            cp ./out/thesis.pdf $out
           '';
         };
       };

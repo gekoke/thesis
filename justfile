@@ -5,4 +5,8 @@ build:
     cd ./src && pdflatex -output-directory="../out/" thesis.tex
     cd ./src && pdflatex -output-directory="../out/" thesis.tex
 
+spell:
+    ./spell.sh
+
+
 
