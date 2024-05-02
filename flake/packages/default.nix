@@ -17,8 +17,10 @@ _:
           ];
 
           nativeCheckInputs = [
-            (pkgs.hunspellWithDicts [ pkgs.hunspellDicts.et_EE ])
-            (pkgs.texliveMinimal.withPackages (p: [ p.detex ]))
+            (pkgs.hunspellWithDicts [
+              pkgs.hunspellDicts.et_EE
+              pkgs.hunspellDicts.en_US
+            ])
           ];
 
           buildPhase = ''
@@ -34,8 +36,7 @@ _:
             export LOCALE_ARCHIVE="${pkgs.glibcLocales}/lib/locale/locale-archive"
             export LANG="en_US.UTF-8"
 
-            detex thesis.tex > thesis_content.txt
-            misspellings=$(hunspell -d et_EE -p spellcheck-ignore.txt -l thesis_content.txt)
+            misspellings=$(find . -name "*.tex" | xargs hunspell -d et_EE,en_US -p spellcheck-ignore.txt -l)
 
             if [[ $misspellings ]]; then
                 echo "Spellcheck failed, misspelled words:"

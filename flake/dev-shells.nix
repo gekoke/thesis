@@ -6,7 +6,10 @@
         packages = [
           pkgs.biber
           self.packages.${system}.texLiveEnvironment
-          (pkgs.hunspellWithDicts [ pkgs.hunspellDicts.et_EE ])
+          (pkgs.hunspellWithDicts [
+            pkgs.hunspellDicts.et_EE
+            pkgs.hunspellDicts.en_US
+          ])
         ];
       };
     };
