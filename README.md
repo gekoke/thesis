@@ -2,13 +2,10 @@
 
 ### Building
 
-#### With TeX Live
+#### With direnv
 ```sh
-cd src
-pdflatex thesis.tex
-biber thesis
-pdflatex thesis.tex
-pdflatex thesis.tex
+direnv allow
+just build
 ```
 
 #### With Nix
