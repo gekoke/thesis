@@ -3,7 +3,16 @@ Grigorjan
 IAIB
 IOT
 Luberg
+Läbivtestimine
+NixOS
+Olemasolev
+OpenTofu
 Põldsam
+allauth
+auth
 digikogu
 digikogusse
+dj
+django
 elektroonse
+
