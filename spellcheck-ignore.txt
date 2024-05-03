@@ -1,13 +1,14 @@
 Gregor
 Grigorjan
 IAIB
-IOT
 Luberg
 Läbivtestimine
+Lähiminevikus
 NixOS
 Olemasolev
 OpenTofu
 Põldsam
+SymPy
 allauth
 auth
 digikogu
@@ -15,4 +16,3 @@ digikogusse
 dj
 django
 elektroonse
-
