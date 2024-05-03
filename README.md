@@ -5,7 +5,7 @@
 #### With direnv
 ```sh
 direnv allow
-just build
+just
 ```
 
 #### With Nix
@@ -13,15 +13,5 @@ just build
 nix build
 ```
 
-### Spellcheck
+Whichever tool you use, building also runs a spellcheck on the `.tex` files.
 
-#### With direnv
-```sh
-direnv allow
-just spell
-```
-
-#### With Nix
-```sh
-nix build
-```
