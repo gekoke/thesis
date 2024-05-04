@@ -16,6 +16,7 @@ p: [
   p.footmisc
   p.forloop
   p.geometry
+  p.hyphen-estonian
   p.hyphenat
   p.listings
   p.listofitems
