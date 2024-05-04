@@ -16,3 +16,6 @@ digikogusse
 dj
 django
 elektroonse
+github
+mestimisi
+tootestada
