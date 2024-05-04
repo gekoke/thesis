@@ -1,4 +1,51 @@
 \section{Funktsionaalsed nõuded}
 
+Süsteemi funktsionaalsed nõuded tulenevad eeskätt kasutaja vajadustest. Süsteem peab olema võimeline toetama põhilisemaid kasutusvooge:
+
+\begin{itemize}
+  \item Rakendus peab lubama genereerida alamhulka riikliku õppekava matemaatika ülesannetest
+  \item Rakendus peab lubama eksportida genereeritud ülesandeid formaadis, mis soosib paberkandjale printimist
+  \item Rakendus peab lubama kasutajal määrata, mis ülesanded satuvad prinditud dokumendile
+  \item Rakendus peab lubama kasutajal hallata juba genereeritud töid
+  \item Rakendus peab lubama genereerida töödele vastuste lehti
+\end{itemize}
+
 \section{Mittefunktsionaalsed nõuded}
+
+Süsteemi mittefunktsionaalseteks nõueteks on:
+
+\begin{itemize}
+  \item Rakendus peab olema kättesaadav eesti keeles
+  \item Rakendus peab olema kättesaadav mistahes veebilehitsejast
+  \item Rakenduse lähtekood peab olema täies mahus inglisekeelne (v.a tõlked)
+  \item Rakenduse funktsionaalsuse õigsus peab olema automaattestidega tagatud
+  \item Rakenduse töökindlus peab olema kindlaks tehtud katsekeskkonnas, mis on süsteemi tarbekeskkonnaga võimalikult sarnane
+  \item Arenduse käigus loodud lähtekood uute funktsionaalsuste tarbeks peab läbima pidevat kvaliteedikontrolli ja integratsiooni ülejäänud lähtekoodiga, s.t järgima CI (\textit{Continuous Integration}) põhimõtteid (vt \ref{ci})
+  \item Rakenduse tarbekeskkonda tarnimine peab toimuma pidevalt, s.t järgima CD (\textit{Continuous Deployment}) põhimõtteid (vt \ref{cd})
+  \item Rakenduse arendus peab olema iga arendaja kohta võimalikult kiire ja produktiivne
+  \item Rakenduse arenduse käigus tehtud otsused peavad olema võimalikult kiiresti vajaduse korral ümber lükatavad
+  \item Rakenduse arendus peab olema minimaalselt rahaliselt kulukas
+\end{itemize}
+
+\subsection{Pidev integratsioon}\label{ci}
+Pidev integratsioon on põhimõtete ning võtete hulk, mis võimaldab:
+
+\begin{itemize}
+  \item automaatselt ja sagedaselt testida ja tootestada lähtekoodi \cite{gitlab-what-are-pipelines}
+  \item sagedasi lähtekoodi mestimisi soosides vähendada mestekonflikte \cite{gitlab-what-is-ci}
+  \item kiirendada arendusprotsessist saadud tagasiside saamist, ning tegeleda ilmnenud probleemidega kiiremalt \cite{gitlab-what-is-ci}
+\end{itemize}
+
+Leidub kaasaegseid tehnoloogiaid, mis on laialdases kasutuses \cite{github-features-actions} ning toetavad pideva integratsiooni põhimõtteid — vt nt. jaotist “\nameref{github-actions}”.
+
+\subsection{Pidev tarnimine}\label{cd}
+Pidev tarnimine on põhimõtete ning võtete hulk, mis võimaldab:
+
+\begin{itemize}
+  \item automaatselt ja sagedaselt tarnida rakendust tarbekeskkonda \cite{gitlab-what-is-cd}
+  \item muuta rakenduse tarbekeskkonda tarnimist rutiinseks ja vähendada sellega kaasnevaid riske \cite{gitlab-cicd-fundamentals}
+  \item taastada rakenduse töökindlus tarbekeskkonnas murede ilmnemisel kiiremini \cite{gitlab-benefits-of-cicd}
+\end{itemize}
+
+Leidub kaasaegseid tehnoloogiaid, mis on laialdases kasutuses \cite{github-features-actions} ning toetavad pideva tarnimise põhimõtteid — vt nt. jaotist “\nameref{github-actions}”.
 
