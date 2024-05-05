@@ -1,32 +1,111 @@
 \section{Metoodika}
 
+Töö teostamiseks vajaminevate tehnoloogiate valimise loogika tugineb lahenduse nõuete (vt peatükk \ref{ch:requirements}) võimalikult täpselt täitmisele.
+
+
+Tagamaks, et rakendus oleks mistahes veebilehitsejast kättesaadav, peab see olema tarnitud internetist kättesaadavasse tarbekeskkonda ning teostatud veebirakendusena. See tähendab omakorda, et otstarbekas oleks kasutada mõnda üldlevinud veebiraamistikku --- kuna rakendus peab tuginema SymPy teegile, peab veebiraamistik toetama Pythoni programmeerimiskeelt.
+
+Tagamaks, et lähtekood saaks olla läbivalt inglisekeelne, ent oleks säilitatud kasutajapoolne võimalus kasutada rakendust eesti keeles, peab tarkvaraline teostus võimaldama tõlkeid.
+
+Tagamaks, et kasutajal on võimalik hallata juba genereerituid töid, peab süsteem võimaldama andmeid talletada — otstarbekas oleks kasutada andmebaasi haldussüsteemi.
 
 \section{Tehnoloogiate võrdlused}
 
+\subsection{Veebiraamistikud}
+
+Töö tarbeks otsustati kasutada veebiraamistikku. Töö kontekstis olulisi omadusi võrdleb tabel \ref{tab:web-framework-comparison}.
+
+\begin{longtable}{|l|c|c|c|c|c|c|c|}
+  \caption{\emph{Pythoni veebiraamistike võrdlus.}}\\ \hline
+  \label{tab:web-framework-comparison}
+  \textbf{Nimi} & \textbf{Aasta} & \textbf{GitHubi tähed} & \textbf{Tööpõhimõte} & \textbf{Migratsioonid} & \textbf{Tõlked} & \textbf{ORM}\\ \hline
+  Django & 2005 \cite{django-faq-why} & 76900 \cite{django-github-repo} & MVC \cite{django-faq-mvc} & Jah & Jah & Jah \\ \hline
+  Flask & 2010 \cite{flask-v1} & 66400 \cite{flask-github-repo} & Mikroraamistik \cite{flask-whats-micro} & Ei & Ei & Ei \\ \hline
+  FastAPI & 2018 \cite{fastapi-github-commit-log} & 71200 \cite{fastapi-github-repo} & Mikroraamistik \cite{fastapi-microframework} & Ei & Ei & Ei \\ \hline
+\end{longtable}
+
+Võrdluses kasutame GitHubi tähtede arvu asendusena raamistiku populaarsusele. Raamistiku populaarsus on töö raames oluline, et leida asjakohast tuge ning dokumentatsiooni.
 
 \section{Valitud tehnoloogiad}
 
+Käesolevas jaotises loetleme ning kirjeldame süsteemi teostamiseks valitud tehnoloogiaid ning tehtud valikute ajendeid.
+
 \subsection{Django}
+
+Django on MVC arhitektuuril põhinev veebiraamistik — üks populaarsemaid Pythoni programmeerimiskeele keskkonnas. Autorid otsustasid Django kasuks järgnevatel põhjustel:
+
+\begin{itemize}
+  \item pikk staaž tagab, et internetis leidub rohkelt sellega seonduvat dokumentatsiooni ja tuge
+  \item sisse ehitatud tõlketugi tagab suurema vaevata rakendusele eestikeelsete tõlgete loomise
+  \item sisse ehitatud ORM tagab andmebaasisüsteemiga suhtluse kolmanda osapoole teeke kaasamata
+  \item sisse ehitatud andmebaasimigratsioonid tagavad arenduskiiruse ja kasutajate andmete töökindla talletamise kolmanda osapoole teeke kaasamata
+  \item MVC arhitektuurimuster soosib arenduskiirust andmemudeliga tihedalt seotud veebipõhise kasutajaliidese loomist võimaldades
+\end{itemize}
 
 \subsubsection{\textit{django-allauth}}
 
+Süsteem kasutab lisaks kolmanda osapoole Django teeki \emph{django-allauth}, mis võimaldab rakendusse integreerida enamiku kaasaegsetest autentimisvõimalustest \cite{django-allauth-introduction}, mida Django raamistik vaikimisi ei võimalda.
+
+Autorid otsustasid, et otstarbekas on kasutada teeki juba rakenduse arendamise alguses, et vajadusel oleks igasuguseid autentimisvõimalusi lihtne süsteemi lõimida.
+
 \subsection{SQLite}
+
+SQLite on maailma kasutatuim andmebaasisüsteem\cite{sqlite}, mis suudab andmeid talletada ühte, täiesti iseseisvasse faili \cite{sqlite-db-file}. Autorid valisid SQLite andmebaasisüsteemi, kuna seda on lihtne hallata väikse skoobiga projektis, ning on taskukohasem, kui kolmanda osapoole hallatud andmebaasisüsteemi teenus.
 
 \subsection{Poetry}
 
-\subsection{Nix}
+Projekti Pythoni sõltuvuste kirjeldamiseks otsustasid autorid kasutada Poetry pakendamistööriista.
+
+Poetry kasutab ettepanekus PEP 518 \cite{pep518} kirjeldatud uut \texttt{pyproject.toml} vormingut tarkvarapaketi kirjeldamiseks, mis on vaikimisi soovitatud Pythoni projektide pakendamiseks ametlikus dokumentatsioonis \cite{python-packaging} — s.t see järgib uusimaid tavasid ning standardeid.
+
+Lisaks võimaldab Poetry lukustada teeke kindlatele versioonidele kasutades kontrollsummasid. Seetõttu:
+
+\begin{itemize}
+  \item tarkvarapaketi tootestamisel on tugevam korratavusgarantii
+  \item Poetry tööriistaga pakendatud projekti saab kasutada, et genereerida Nix tarkvarapaketi (vt jaotis \ref{subsec:nix})
+\end{itemize}
+
+\subsection{Nix}\label{subsec:nix}
+
+Nix on puhaste funktsioonide põhjal ehitatud paketihaldur \cite{nixos-how-nix-works}. Nix võimaldab defineerida tarkvarapakette, arenduskeskkondi, operatsioonisüsteemide konfiguratsioone, virtuaalmasinavõrke ning nendes jooksvaid teste \cite{nixos-explore, nixos-manual-vmtests}.
+
+Autorid valisid töö tarbeks Nixi, kuna nad on sellega kogenud, sellega saab hõlpsalt jagada arendajate vahel töökeskkondi, ning sellega on lihtne defineerida taristut, pidevat integratsiooni ja pidevat tarnimist koodis \cite{nixos-explore}.
 
 \subsubsection{poetry2nix}
 
+Poetry2nix on Nixi programmeerimiskeeles kirjutatud teek, mis genereerib automaatselt Poetry tööriistaga defineeritud Pythoni projektist Nix tarkvarapaketi \cite{poetry2nix-repo}.
+
+Töö raames on poetry2nix vajalik, et pakendatud projektiga saaks Nixi koodis väärtusena ümber käia, mille abil saab projekti suhtes taristut defineerida.
+
+Võimalik on ka Nixi tarkvarapakett käsitsi defineerida, ent eelmainitud toimimine vähendab tühja tööd.
+
 \subsubsection{NixOS}
+
+NixOS on Linuxi distributsioon, mis on Nixi paketihalduri peale ehitatud \cite{nixos-manual-preface}. NixOS koosneb nixpkgs tarkvaraarhiivis defineeritud moodulitest ning seda ümbritsevast taristust \cite{nixos-manual-preface}. NixOS võimaldab defineerida arvutisüsteeme, kasutades deklaratiivset Nixi programmeerimiskeelt \cite{nixos-manual-configuration}, ning tagab seejuures tugevad korratavusgarantiid.
+
+Jaotis \ref{subsec:cicd} kirjeldab täpsemalt projekti tarnimise tarbeks kasutatud NixOS konfiguratsiooni.
 
 \subsubsection{deploy-rs}
 
+Deploy-rs on teek, mis hõlbustab NixOS konfiguratsioonide tarnimist hostidele. Tarnimisi defineeritakse Nixi programmeerimiskeeles kirjutatud spetsifikatsioonidega. Tarnimise viib ellu \texttt{deploy} nimeline käsureaprogramm \cite{deploy-rs}.
+
 \subsection{GitHub}
+
+GitHub on üks enimkasutatud \emph{forge} teenuseid. Autorid valisid GitHubi töö tarbeks kuna neil on sellega kogemust, ning see on integreeritud GitHub Actions CI/CD taristuga.
 
 \subsubsection{GitHub Actions}\label{subsubsec:github-actions}
 
+GitHub Actions on GitHubi platvormiga integreeritud CI/CD lahendus. GitHub Actions võimaldab kolmandatel osapooltel panustada CI/CD konveierite definitsioone, mida saab projektides taaskasutada \cite{github-finding-actions}. Sellised definitsioonid hõlbustavad Nixi paketihalduri ning selle jõudlust parandava puhvri CI/CD konveieris üles seadmist.
+
+Jaotis \ref{subsec:cicd} kirjeldab täpsemalt üles seatud CI/CD konveierit.
+
 \subsection{OpenTofu}
 
+OpenTofu on Terraformi projekti \emph{fork}, mis pürgib jääda vabavaraliseks ka pärast algse projekti litsensivahetust \cite{opentofu-faq-why}. Mõlemad projektid võimaldavad defineerida taristut — nt virtuaalmasinaid ja muid pilvteenustarnijate pakutud teenuseid — lähtekoodina, ning siis seda käsureaprogrammiga üles seada või maha tirida.
+
+Autorid valisid OpenTofu, et hõlbustada virtuaalmasina üles seadmist NixOS operatsioonisüsteemiga. Autorid valisid selle Terraformi asemel, kuna nad eelistavad võimalusel kasutada vabavara, ning OpenTofu on kirjutamise ajal Terraformiga samaväärne \cite{opentofu-faq-terraform-replacement, opentofu-faq-state-file, opentofu-faq-providers}.
+
 \subsection{Amazon EC2}
+
+Amazon EC2 on pilvteenus, mis pakub vajadusele skaleeritavaid virtuaalmasina instantse. Autorid valisid Amazon EC2, et tarnida rakendust, kuna see täidab taskukohasuse nõuet, on laialdaselt kasutatud, ning selle jaoks on juba genereeritud NixOS toega \emph{Amazon Machine Image} (AMI) virtuaalmasinatõmmised \cite{nixos-amis}.
 
