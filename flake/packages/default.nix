@@ -24,6 +24,8 @@ _:
             ])
           ];
 
+          FONTCONFIG_FILE = pkgs.makeFontsConf { fontDirectories = [ texLiveEnvironment.fonts ]; };
+
           buildPhase = "just build";
 
           doCheck = true;

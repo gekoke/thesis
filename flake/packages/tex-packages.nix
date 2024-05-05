@@ -13,6 +13,7 @@ p: [
   p.etoolbox
   p.float
   p.fmtcount
+  p.fontspec
   p.footmisc
   p.forloop
   p.geometry
@@ -23,6 +24,7 @@ p: [
   p.microtype
   p.multirow
   p.needspace
+  p.newtx
   p.readarray
   p.setspace
   p.times
@@ -33,6 +35,9 @@ p: [
   p.verbatimbox
   p.wrapfig
   p.xcolor
+  p.xetex
   p.xkeyval
+  p.xpatch
+  p.xstring
 ]
 

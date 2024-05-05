@@ -22,8 +22,7 @@
 \usepackage{chngcntr}\counterwithout{table}{chapter}
 \counterwithout{figure}{chapter}
 
-\usepackage[T2A,T1]{fontenc}
-\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
 \usepackage{amssymb}                                                                      % For square itemized lists
 \renewcommand{\labelitemi}{\tiny$\blacksquare$}
 \usepackage{caption}
@@ -36,7 +35,7 @@
 \addbibresource{references.bib}                                                           % Adds references file
 \usepackage[final]{microtype}                                                             % To prevent overfull hbox in \printbibliography - option 2
 
-\usepackage{times}
+\usepackage{newtxtext,newtxmath}
 \setlength{\parindent}{0cm}
 \usepackage{setspace}
 \onehalfspacing{}
