@@ -11,6 +11,7 @@ p: [
   p.cyrillic
   p.enumitem
   p.etoolbox
+  p.fancyvrb
   p.float
   p.fmtcount
   p.fontspec
@@ -19,9 +20,10 @@ p: [
   p.geometry
   p.hyphen-estonian
   p.hyphenat
-  p.listings
+  p.latexmk
   p.listofitems
   p.microtype
+  p.minted
   p.multirow
   p.needspace
   p.newtx
@@ -32,6 +34,7 @@ p: [
   p.tocloft
   p.todonotes
   p.totcount
+  p.upquote
   p.verbatimbox
   p.wrapfig
   p.xcolor

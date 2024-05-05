@@ -12,3 +12,4 @@
 *.xml
 /.direnv/
 /out/
+/src/_minted-thesis/

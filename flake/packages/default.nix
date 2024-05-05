@@ -14,6 +14,7 @@ _:
           nativeBuildInputs = [
             pkgs.biber
             pkgs.just
+            pkgs.python3Packages.pygments
             texLiveEnvironment
           ];
 
