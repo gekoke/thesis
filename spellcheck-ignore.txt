@@ -51,6 +51,7 @@ hosti
 hostidele
 hunspell
 identiteet
+kasutajanime
 kasutajaliidese
 kasutajapoolne
 kasutajasõbralik
@@ -64,7 +65,9 @@ läbivtestidega
 läbivtestimiskeskkonnas
 läbivtestkeskkond
 macOS
+maths
 mestimisi
+mestiti
 mestitud
 nixos
 nixosmodule
