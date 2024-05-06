@@ -32,7 +32,7 @@ _:
           checkPhase = ''
             export LOCALE_ARCHIVE="${pkgs.glibcLocales}/lib/locale/locale-archive"
             export LANG="en_US.UTF-8"
-            just spell
+            just check
           '';
 
           installPhase = ''
