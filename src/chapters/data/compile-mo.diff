@@ -1,0 +1,42 @@
+From 8956d09da42f03df1034fa7d4bb918ee77e94858 Mon Sep 17 00:00:00 2001
+From: Gregor Grigorjan <gregor@grigorjan.net>
+Date: Wed, 24 Apr 2024 17:26:13 +0300
+Subject: [PATCH] python3Packages.django-allauth: compile `.mo` files
+
+---
+ .../development/python-modules/django-allauth/default.nix | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/pkgs/development/python-modules/django-allauth/default.nix b/pkgs/development/python-modules/django-allauth/default.nix
+index 8a1f6dc8ac06fc..e37e826c57465f 100644
+--- a/pkgs/development/python-modules/django-allauth/default.nix
++++ b/pkgs/development/python-modules/django-allauth/default.nix
+@@ -6,6 +6,9 @@
+ # build-system
+ , setuptools
+ 
++# build-time dependencies
++, gettext
++
+ # dependencies
+ , django
+ , python3-openid
+@@ -41,6 +44,7 @@ buildPythonPackage rec {
+   };
+ 
+   nativeBuildInputs = [
++    gettext
+     setuptools
+   ];
+ 
+@@ -52,6 +56,10 @@ buildPythonPackage rec {
+     requests-oauthlib
+   ] ++ pyjwt.optional-dependencies.crypto;
+ 
++  configurePhase = ''
++    python -m django compilemessages
++  '';
++
+   passthru.optional-dependencies = {
+     saml = [
+       python3-saml

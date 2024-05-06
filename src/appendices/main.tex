@@ -1,7 +1,12 @@
 \clearpage
 \phantomsection
-\newcommand{\appendixLicense}{Lisa 1 — Lihtlitsents lõputöö reprodutseerimiseks ja lõputöö üldsusele kättesaadavaks tegemiseks}
-\chapter*{\appendixLicense}
-\addcontentsline{toc}{chapter}{\appendixLicense}\label{chapter:license}
+\chapter*{\appendixLicense\footnote{\licenseFootnote}}\label{app:license}
+\addcontentsline{toc}{chapter}{\appendixLicense}
 \input{appendices/license.tex}
+
+\clearpage
+\phantomsection
+\chapter*{\appendixTranslations}\label{app:allauth-translations}
+\addcontentsline{toc}{chapter}{\appendixTranslations}
+\input{appendices/translations.tex}
 

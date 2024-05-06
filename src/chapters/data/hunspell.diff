@@ -1,0 +1,42 @@
+From 1d261ca49aa0efee846c660a01358d66fa2c12d1 Mon Sep 17 00:00:00 2001
+From: Gregor Grigorjan <gregor@grigorjan.net>
+Date: Mon, 29 Apr 2024 22:38:25 +0300
+Subject: [PATCH] hunspellDicts.et_EE: init at 20030606
+
+---
+ .../libraries/hunspell/dictionaries.nix       | 22 +++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+
+diff --git a/pkgs/development/libraries/hunspell/dictionaries.nix b/pkgs/development/libraries/hunspell/dictionaries.nix
+index 3f6127502d686b..fd383ba2acf811 100644
+--- a/pkgs/development/libraries/hunspell/dictionaries.nix
++++ b/pkgs/development/libraries/hunspell/dictionaries.nix
+@@ -669,6 +669,28 @@ rec {
+     shortDescription = "Swedish (Finland)";
+   };
+ 
++  /* ESTONIAN */
++
++  et_EE = et-ee;
++  et-ee = mkDict rec {
++    pname = "hunspell-dict-et-ee";
++    name = pname;
++    version = "20030606";
++
++    src = fetchzip {
++      url = "http://www.meso.ee/~jjpp/speller/ispell-et_${version}.tar.gz";
++      sha256 = "sha256-MVfKekzq2RKZONsz2Ey/xSRlh2bln46YO5UdGNkFdxk=";
++    };
++
++    dictFileName = "et_EE";
++    readmeFile = "README";
++
++    preInstall = ''
++      mv latin-1/${dictFileName}.dic ./
++      mv latin-1/${dictFileName}.aff ./
++    '';
++  };
++
+   /* GERMAN */
+ 
+   de_DE = de-de;

@@ -1,0 +1,21 @@
+From 9c970f4c554c870286c0ba84b9bb3f6ba56d0a9d Mon Sep 17 00:00:00 2001
+From: Gregor Grigorjan <gregor@grigorjan.net>
+Date: Thu, 29 Feb 2024 00:15:19 +0200
+Subject: [PATCH] overrides: add hash for cryptography 42.0.5
+
+---
+ overrides/default.nix | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/overrides/default.nix b/overrides/default.nix
+index c0f6dab20..0a9bc4e95 100644
+--- a/overrides/default.nix
++++ b/overrides/default.nix
+@@ -559,6 +559,7 @@ lib.composeManyExtensions [
+             "42.0.1" = "sha256-Kq/TSoI1cm9Pwg5CulNlAADmxdq0oWbgymHeMErUtcE=";
+             "42.0.2" = "sha256-jw/FC5rQO77h6omtBp0Nc2oitkVbNElbkBUduyprTIc=";
+             "42.0.3" = "sha256-QBZLGXdQz2WIBlAJM+yBk1QgmfF4b3G0Y1I5lZmAmtU=";
++            "42.0.5" = "sha256-Pw3ftpcDMfZr/w6US5fnnyPVsFSB9+BuIKazDocYjTU=";
+           }.${version} or (
+             lib.warn "Unknown cryptography version: '${version}'. Please update getCargoHash." lib.fakeHash
+           );

@@ -1,0 +1,21 @@
+From 4125c951047432e02a12eaa41c135da1ab91b023 Mon Sep 17 00:00:00 2001
+From: Gregor Grigorjan <gregor@grigorjan.net>
+Date: Tue, 30 Jan 2024 13:46:48 +0200
+Subject: [PATCH] overrides: add hash for cryptography 42.0.1
+
+---
+ overrides/default.nix | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/overrides/default.nix b/overrides/default.nix
+index e41c5ca30..b3f8c8180 100644
+--- a/overrides/default.nix
++++ b/overrides/default.nix
+@@ -556,6 +556,7 @@ lib.composeManyExtensions [
+             "41.0.5" = "sha256-ABCK144//RUJ3AksFHEgqC+kHvoHl1ifpVuqMTkGNH8=";
+             "41.0.6" = "sha256-E7O0035BnJfTQeZNAN3Oz0fMbfj45htvnK8AHOzfdcY=";
+             "41.0.7" = "sha256-VeZhKisCPDRvmSjGNwCgJJeVj65BZ0Ge+yvXbZw86Rw=";
++            "42.0.1" = "sha256-Kq/TSoI1cm9Pwg5CulNlAADmxdq0oWbgymHeMErUtcE=";
+             "42.0.2" = "sha256-jw/FC5rQO77h6omtBp0Nc2oitkVbNElbkBUduyprTIc=";
+             "42.0.3" = "sha256-QBZLGXdQz2WIBlAJM+yBk1QgmfF4b3G0Y1I5lZmAmtU=";
+           }.${version} or (

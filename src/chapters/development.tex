@@ -9,16 +9,69 @@
 
 \section{Vabavarasse panustamine}
 
-\subsection{Teegi \textit{poetry2nix} hooldus}
+Rakenduse arenduse käigus tuli ette olukordi, kus vabavaralised projekti sõltuvused vajasid kas täiendamist või parandamist, et töö saaks edukalt ning nõuetekohaselt jätkuda. Käesolev jaotis kirjeldab kordi, kui tarneahelas ülesvoolu tarkvaraprojektidesse oli otstarbekas muudatusi panustada.
+
+\subsection{Teegi \emph{poetry2nix} hooldus}
+
+Jaotises \ref{subsubsec:poetry2nix} mainitud \texttt{poetry2nix} teek paikab Nixpkgs arhiivist defineeritud Pythoni teeke, muutes nende tootestamissamme. Kuna Nixi paketihaldur taotleb korratavusgarantiisid, on sageli vaja tootestamiseks täpsustada kontrollsummasid.
+
+Juhul, kui tootestamisprotsessis mõne sõltuvuse versioonid on uuenenud, ei saa Nixi paketihaldur neid üle võrgu alla tõmmata, kuna \texttt{poetry2nix} teegi paikadest puuduvad uuele versioonile vastavad kontrollsummad.
+
+Kahel korral tekkis projekti tootestamisprotsessis sellise sündmuse tõttu viga. Joonistes \ref{fig:poetry2nix-patch1} ja \ref{fig:poetry2nix-patch2} on välja toodud paiked, mis parandasid eelmainitud vead, ning on nüüdseks \texttt{poetry2nix} teegi lähtekoodi mestitud \cite{poetry2nix-pr-1, poetry2nix-pr-2}.
+
+\begin{figure}
+\inputminted[breaklines]{diff}{chapters/data/poetry2nix-patch1.diff}
+\caption{\emph{Poetry2nix teegi kontrollsumma paik nr 1.}}\label{fig:poetry2nix-patch1}
+\end{figure}
+
+\begin{figure}
+\inputminted[breaklines]{diff}{chapters/data/poetry2nix-patch2.diff}
+\caption{\emph{Poetry2nix teegi kontrollsumma paik nr 2.}}\label{fig:poetry2nix-patch2}
+\end{figure}
+\clearpage
 
 \subsection{Teegi \textit{django-allauth} tõlkimine eesti keelde}
 
-\subsection{Teegi \textit{django-allauth} Nix tarkvarapaketi parandused}
+Pythoni teek \texttt{django-allauth} kaasab endaga palju tõlkeid \cite{django-allauth-i18n}, mida kasutatakse autentimisvoogudes kasutajale sõnumite edastamiseks. Enne bakalaureustöö alustamist ei toetanud \texttt{django-allauth} teek eesti keelt \cite{django-allauth-pre-et-i18n}.
+
+Kuna üheks projekti nõuetest oli, et rakendus peab olema kättesaadav eesti keeles, siis oli otstarbekas panustada tõlked tarneahelas ülesvoolu poole, et vältida projekti lähtekoodis muudatuste haldamist. Teeki panustati pea täies mahus eestikeelsed tõlked \cite{django-allauth-et-i18n-pr}, mis on leida \texttt{.po} vormingus\footnote{\texttt{.po} failivorming on \texttt{GNU gettext} tööriistakomplektis defineeritud failivorming, mis on mõeldud tõlgete defineerimiseks. Failivorming on mõeldud olema kergesti mõistetav ka tõlkidele \cite{gnu-gettext-po}.} lisast ``\nameref{app:allauth-translations}''.
+
+\subsection{Teegi \textit{django-allauth} Nix tarkvarapaketi parandused}\label{subsec:compile-mo}
+
+Django projektid kasutavad tõlgete toetamiseks \texttt{GNU gettext} tööriistakomplekti \cite{django-gettext}. Tõlgete toimimiseks peab \texttt{.po} vormingus lihttekstfailid kompileerima \texttt{.mo} vormingus kahendfailideks \cite{django-gettext}.
+
+Nixpkgs arhiivi kommete järgi eelistatakse võimaluse korral tootestada tarkvarapakette otse lähtekoodist. Django ja muude Django peale ehitatud teekide puhul tähendab see seda, et pakendamisel pakendatakse kaasa \texttt{.mo} kahendfailid, kuna neid hoitakse ülesvoolu projekti repositooriumites. Teegi \texttt{django-allauth} puhul aga puuduvad lähtekoodis \texttt{.mo} kahendfailid — need pakendatakse kaasa eraldi tootestamissammus PyPI paketiarhiivi väljalaset tarnides \cite{django-allauth-no-mo-files}.
+
+Kokkuvõttes tähendab see seda, et teegi \texttt{django-allauth} tõlked töötavad vaikimisi, kui teek on paigaldatud \texttt{pip install}\footnote{\texttt{pip} on ametlikult soovitatud tööriist PyPI arhiivist Pythoni teekide paigaldamiseks \cite{pip-standard}} käsu või mõne muu PyPI arhiivist teeke paigaldava käsuga, ent mitte Nixi paketihalduriga pakendatud Pythoni projektis.
+
+Olukorra leevendamiseks sooritati Nixpkgs arhiivi repositooriumisse tõmbekutse, mis vea parandas \cite{nixpkgs-compile-mo}. Nixi tarkvarapaketi definitsiooni paik on kirjeldatud joonises \ref{fig:compile-mo-patch}. Kirjutamise ajal pole tõmbekutse sisu repositooriumisse mestitud. 
+
+\begin{figure}
+\inputminted[breaklines]{diff}{chapters/data/compile-mo.diff}
+\caption{\emph{Teegi \texttt{django-allauth} Nix tarkvarapaketti parandav paik.}}\label{fig:compile-mo-patch}
+\end{figure}
+\clearpage
 
 \subsection{Teegi \textit{dj-rest-auth} testide hooldused}
 
-\subsection{Tõlkeprogrammi \textit{Hunspell} eestikeelse sõnastiku \textit{Nix} pakendi loomine}
+Jaotises \ref{subsec:compile-mo} kirjeldatud parandusi ellu viies oli otstarbekas ka juba tarkvarapaketi versiooni uuendada. Autorid tegid tõmbekutse Nixpkgs paketiarhiivi repositooriumisse \cite{allauth-bump-nixpkgs}, mis uuendas eelmainitut versioonilt \texttt{0.61.1} versioonile \texttt{0.62.0}.
 
+Kuna Nixi paketihaldur ei toeta tarkvarapakettide versioonide lahendamist ja haldamist\footnote{Nixi jaoks on paketi identiteet täielikult tootestamissammudele antud sisendite kontrollsummadest määratud \cite{nixos-how-nix-works} — \texttt{(pakett-A, v1.0.0)} ning \texttt{(pakett-A, v1.0.1)} on täiesti üksteisest eristamatud. Sellegipoolest on versioonilahendus oluline, ning seda taasimplementeeritakse paketiarhiivi lähtekoodis \cite{python3-nix-versioning}.}, võivad tekkida iga uue versioonihalduse \emph{commit}'i puhul lahkhelid sõltuvusgraafis.
+
+Selline lahkheli tekkis versiooni uuendamisel: repositooriumis oli tarkvarapakett, mille testid sõltusid \texttt{django-allauth} teegist \cite{test-dep} — selle testid lakkasid edukalt jooksmast, kuna uues \texttt{django-allauth} versioonis oli teegi sisemusi ringi liigutatud ning ümber kirjutatud.
+
+Vea parandamiseks avasid autorid tõmbekutse tarneahelas ülesvoolu projektis \texttt{dj-rest-auth}, mis parandas teste niiviisi, et nad töötaksid ka uue \texttt{django-allauth} versiooniga \cite{dj-rest-pr}.
+
+\subsection{Hunspell sõnastiku Nix pakendi loomine}
+
+Hunspell on õigekirjakontrolli teostav programm, mida kasutavad Google Chrome, Mozilla Firefox, macOS, LibreOffice ja Thunderbird \cite{hunspell}.
+Käesoleval bakalaureusetööl õigekirjakontrolli arenduskeskkonnas ja pidevas integratsioonis rakendamise tarbeks pakendasid autorid Hunspellile eestikeelsed sõnastikud \cite{hunspell-pr}. Nixpkgs arhiivi tehtud tõmbekutse sisu kirjeldab joonis \ref{fig:hunspell-pr}.
+
+\begin{figure}
+\inputminted[breaklines]{diff}{chapters/data/hunspell.diff}
+\caption{\emph{Nixpkgs arhiivi Hunspelli eestikeelse sõnastiku paki lisamine.}}\label{fig:hunspell-pr}
+\end{figure}
+\clearpage
 
 \section{Rakenduse arendus}
 
