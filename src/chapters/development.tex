@@ -8,6 +8,12 @@ Arenduse tarbeks kasutatud versioonihalduse hargnemismudeliks valiti \textit{Git
 
 \subsection{Koodi läbivaatus}\label{subsec:code-review}
 
+Koodi läbivaatus on tava, mille eesmärk on parandada ja säilitada koodi kvaliteeti \cite{gitlab-code-review}. Hea koodi läbivaatuse tulemusena on edasine arendus hõlpsam ning kliendile tarnimine turvakindlam \cite{gitlab-code-review}.
+
+Koodi kvaliteedi tagamiseks ning vigade ilmumiste vähendamiseks otsustati arendusprotsessis läbi viia perioodilist koodi läbivaatust. Läbivaatust korraldati iga märkimisväärse muudatuse kohta ning seda viis läbi arendusest mitte osavõttev arendaja. Läbivaatuse käigus prooviti leida koodis loogikavigu ning leida viise kuidas protsesse selgemini väljendada. Lisaks koodiläbivaatustele viidi läbi arenduse käigus arutelusid, et lahendada keerulisemaid probleeme.
+
+Koodi läbivaatust teostati GitHubi keskkonnas kasutades tõmbekutseid. Juhul kui arendused vajasid parandusi palus ülevaataja, et sinna tehtaks vajalikke muudatusi. Kui arendus sai heaks kiidetud mestiti see peaharuga.
+
 \subsection{Tööjaotus}
 
 
@@ -78,9 +84,74 @@ Käesoleval bakalaureusetööl õigekirjakontrolli arenduskeskkonnas ja pidevas 
 
 \subsection{Ülesannete genereerimine}
 
+Ülesannete genereerimiseks vajas iga ülesandetüüp eraldi implementatsiooni. Selle teostamiseks määrati igale ülesandetüübile üldkuju, milles olid kindlates asukohtades muutujad. Erinevate ülesannete saamiseks kasutati suvaliselt genereeritud numbreid, mis täitsid muutujate väärtused.
+
+Paraku on sellist meetodit kasutades suur probleem vastuste kujudega. Kuna suvalisi numbreid kasutades on ebatõenäoline, et vastus taandub väiksemale kujule, on tihti vastuste väärtused pikad ning ebamugavad arvutamiseks ilma kalkulaatorita. Probleemi parandamiseks on võimalik piirata kasutatavate suvaliste numbrite hulka ning vältida suuremaid numbreid täiesti. Selle tulemusena on võimalike ülesannete hulk palju väiksem, kuid ikkagi piisavalt suur, et korduvate ülesannete ilmumine ei oleks tõenäoline.
+
+Peale ülesande definitsiooni koostamist arvutatakse automaatselt probleemi vastus kasutades SymPy teeki. Arenduse käigus avastati, et SymPy ei kuva alati võrratusi samamoodi ning lisab mõnele muutujale juurde ühega korrutamise. Korrutamise erisus ei muuda vastuse väärtust ega lahendamise protsessi, kuid on nähtav probleemi definitsioonis. Töö kirjutamise ajal ei lahendatud seda probleemi, kuna see ei langenud kokku süsteemi nõuetega (vaata jaotis \ref{sec:nonfunctional-requirements}). Joonis \ref{fig:maths} kuvab ruutvõrratuste loomise lähtekoodi.
+
+Rakendus toetab kolme ülesandetüüpi:
+\begin{itemize}
+  \item lineaarvõrratusi
+  \item ruutvõrratusi
+  \item murdvõrratusi
+\end{itemize}
+
+\begin{figure}
+\inputminted[breaklines]{py}{chapters/data/maths.py}
+\caption{\emph{Ruutvõrratuse loomise lähtekood.}}\label{fig:maths}
+\end{figure}
+
 \subsection{Andmemudelite loomine}
 
 \subsection{Vaadete loomine}
+
+Töö nõuete täitmiseks oli vajalik luua mitu vaadet, mis tagaks kasutajale võimaluse luua ning hallata teste ja testide malle (vt jaotis \ref{sec:functional-requirements}).
+
+Rakendusele loodi järgnevad vaated:
+\begin{itemize}
+  \item sisselogimise vaade
+  \item konto loomise vaade
+  \item rakenduse koondpaneel ehk avalehe vaade
+  \item mallide koondvaade
+  \item malli loomise vaade
+  \item malli detailvaade
+  \item malli detailide uuendamise vaade
+  \item malli probleemi lisamise vaade
+  \item malli probleemi uuendamise vaade
+  \item testi genereerimise vaade
+  \item testi salvestamise vaade
+  \item testide koondvaade
+  \item testi detailvaade
+  \item ülesande tüüpide koondvaade
+  \item ülesande variandi alla laadimise vaade
+  \item ülesande vastustelehe alla laadimise vaade
+\end{itemize}
+
+Joonis \ref{fig:dashboard_view} kuvab rakenduse avalehte. Joonis \ref{fig:template_details_view} kuvab malli detailvaadet. Joonis \ref{fig:test_generation_save_view} kuvab testi salvestamise vaadet peale seda kui test on genereeritud.
+
+Rakenduse esmasel kasutusel saabub kasutaja sisselogimise vaatele. Sealt edasi on tal võimalik täita kasutajanime ja salasõna väljad ning rakendusse sisse logida.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{dashboard_view}
+    \caption{Rakenduse avalehe vaade}
+    \label{fig:dashboard_view}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{templates_details_view}
+    \caption{Malli detailvaade}
+    \label{fig:template_details_view}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{test_generation_save_view}
+    \caption{Testi salvestamise vaade}
+    \label{fig:test_generation_save_view}
+\end{figure}
 
 \subsection{Rakenduse testimine}
 

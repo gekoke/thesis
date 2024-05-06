@@ -64,7 +64,9 @@ läbivtestidega
 läbivtestimiskeskkonnas
 läbivtestkeskkond
 macOS
+maths
 mestimisi
+mestiti
 mestitud
 nixos
 nixosmodule
