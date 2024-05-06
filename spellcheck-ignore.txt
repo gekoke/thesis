@@ -5,6 +5,7 @@ FastAPI
 GitHubi
 Gregor
 Grigorjan
+Guid
 Hunspelli
 Hunspellile
 HyperText
@@ -22,6 +23,7 @@ Nixpkgs
 Olemasolev
 OpenTofu
 Pico
+ProblemKind
 PyPI
 Pythoni
 Põldsam
@@ -29,11 +31,14 @@ Sellegipoolest
 SymPy
 Terraformi
 Terraformiga
+TestVersion
+addProblem
 allauth
 autentimisvoogudes
 autentimisvõimalusi
 autentimisvõimalustest
 auth
+boolean
 cd
 ci
 config
@@ -45,6 +50,8 @@ ec
 elektroonse
 fontsize
 formaalkeel
+generateTest
+getProblemText
 gettext
 github
 hosti
@@ -74,13 +81,18 @@ nixosmodule
 nixpkgs
 olemasolev
 paiked
+pdf
+plantucolor
 po
+problemKind
 programmaatiliselt
 provisionCertificates
+pstyle
 py
 pyproject
 pytest
 relatsiooniline
+removeProblem
 skaleeritavaid
 subsubsec
 taristuga
@@ -112,5 +124,7 @@ tootestamissammudele
 tootestamissammus
 tootestati
 tootestatud
+versionNumber
 virtualiseeritud
 yaml
+yscale

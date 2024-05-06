@@ -1,4 +1,5 @@
 p: [
+  p.adjustbox
   p.amsmath
   p.babel-estonian
   p.biblatex
@@ -20,6 +21,7 @@ p: [
   p.geometry
   p.hyphen-estonian
   p.hyphenat
+  p.koma-script
   p.latexmk
   p.listofitems
   p.microtype
@@ -29,11 +31,13 @@ p: [
   p.newtx
   p.readarray
   p.setspace
+  p.svg
   p.times
   p.titlesec
   p.tocloft
   p.todonotes
   p.totcount
+  p.trimspaces
   p.upquote
   p.verbatimbox
   p.wrapfig
@@ -42,5 +46,6 @@ p: [
   p.xkeyval
   p.xpatch
   p.xstring
+  p.transparent
 ]
 

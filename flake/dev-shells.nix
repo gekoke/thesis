@@ -6,6 +6,7 @@
         packages = [
           pkgs.biber
           pkgs.just
+          pkgs.inkscape
           pkgs.python3Packages.pygments
           self.packages.${system}.texLiveEnvironment
           (pkgs.hunspellWithDicts [
