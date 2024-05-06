@@ -1,0 +1,25 @@
+name: ci
+
+on:
+  push:
+    branches-ignore:
+      - main
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v10
+
+      - name: Set up binary cache
+        uses: cachix/cachix-action@v14
+        with:
+          name: abiopetaja
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+
+      - name: Checkout repository
+        uses: actions/checkout@v4.1.4
+
+      - name: Run checks
+        run: nix flake check -L --system x86_64-linux

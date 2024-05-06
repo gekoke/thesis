@@ -83,9 +83,77 @@ Käesoleval bakalaureusetööl õigekirjakontrolli arenduskeskkonnas ja pidevas 
 
 \subsection{Rakenduse testimine}
 
+Tagamaks rakenduse testituse nõuet (vt jaotis \ref{sec:nonfunctional-requirements}) kirjutati rakendusele nii Django raamistiku testimisliidestele \cite{django-testing-api} tuginevad integratsioonitestid, kui ka virtuaalmasinavõrkudes jooksvad NixOS testid \cite{nixos-tests} (vt jaotist \ref{subsubsec:e2etests}).
+
 \subsubsection{Integratsioonide testimine}
 
-\subsubsection{Läbivtestimine}
+Veebiraamistiku tasemel rakenduse erinevate kihtide integratsioonide testimiseks kasutati \texttt{pytest-django} teeki, mis võimaldab
+\texttt{pytest} testimisraamistiku kaudu kutsuda Django raamistiku testimisliideseid \cite{pytest-django-usage}. Teegi \texttt{pytest} testide jooksutamise tulemusena on testimiskood oluliselt kompaktsem ja kergemini loetav \cite{pytest-django-why}.
+
+Joonis \ref{fig:pytest} kuvab katkendit lähtekoodi testimismooduli lähtekoodist.
+
+\begin{figure}
+\inputminted[breaklines]{py}{chapters/data/test.py}
+\caption{\emph{Üks testimismooduli integratsioonitestidest.}}\label{fig:pytest}
+\end{figure}
+
+\subsubsection{Läbivtestimine}\label{subsubsec:e2etests}
+
+\newcommand{\stateActually}{Tegelikkuses kirjeldavad NixOS konfiguratsioonid paketi tootestamisel toodetuid skripte ja muid ressursse, mis hostile NixOS konfiguratsiooni paigaldavad. Praktikas on tööriistakomplekti korratavusgarantiid nii tugevad, et sellest võib mõelda kui konfiguratsiooni olekust hostil.}
+
+Läbivtestimise eelduseks on NixOS mooduli defineerimine, mis kirjeldab Abiõpetaja rakenduse paigaldust NixOS operatsioonisüsteemis. Mooduli abil on edaspidi võimalik realiseerida NixOS konfiguratsioone \cite{nixos-configuration}, mis kirjeldavad operatsioonisüsteemi olekut\footnote{\stateActually} läbivtestimiskeskkonnas või tarbekeskkonnas. Abiõpetaja rakenduse paigaldust kirjeldav NixOS moodul on välja toodud lisas ``\nameref{app:nixosmodule}''.
+
+Moodulit saab kasutada virtuaalmasinatestide defineerimiseks. Joonis \ref{fig:test-vm-server} kirjeldab virtualiseeritud läbivtestimiskeskkonnas rakenduse serveri hosti konfiguratsiooni. Joonis \ref{fig:vm-tests} kirjeldab läbivteste, mida pidevas integratsioonis jooksutatakse (vt jaotis \ref{subsec:cicd}).
+
+Oluline on märkida, et tarbekeskkonna rakenduse konfiguratsioon (vt jaotis \ref{subsec:cicd}) erineb vaid väärtuste \texttt{provisionCertificates} ning \texttt{domains} poolest, mis tähendab, et läbivtestkeskkond on tarbekeskkonnale nõuetekohaselt (vt jaotis \ref{sec:nonfunctional-requirements}) maksimaalselt sarnane.
+
+\begin{figure}
+\inputminted[breaklines]{nix}{chapters/data/test-vm-server.nix}
+\caption{\emph{Läbivtestkeskkonnas kasutatava serveri hosti NixOS konfiguratsioon.}}\label{fig:test-vm-server}
+\end{figure}
+
+\begin{figure}
+\inputminted[breaklines]{nix}{chapters/data/vm-tests.nix}
+\caption{\emph{Nix programmeerimiskeele funktsioon, mis tagastab järjendi läbivtestidega.}}\label{fig:vm-tests}
+\end{figure}
 
 \subsection{Rakenduse tarnimine}\label{subsec:cicd}
+
+Käesolev jaotis kirjeldab rakenduse tarnimist.
+
+\subsubsection{Taristu hankimine}
+
+Rakenduse tarnimiseks vajalikku ning jaotises \ref{subsec:ec2} kirjeldatud Amazon EC2 virtuaalmasina hankimiseks kasutati jaotises \ref{subsec:opentofu} kirjeldatud OpenTofu tööriista. Taristu definitsiooni \texttt{.tf} vormingus on loetletud lisas ``\nameref{app:infra}''.
+
+\subsubsection{CI/CD konveier}
+
+Nõuetekohase pidevat integratsiooni (vt jaotist \ref{sec:nonfunctional-requirements}) tagamiseks defineeriti Nixi tarkvarapaketid, mida GitHub Actions konveieris tootestati.
+
+Joonis \ref{fig:ci-yaml} kirjeldab \texttt{.yaml} vormingus GitHub Actions tööplaani, mis seab üles Nixi paketihalduriga keskkonna ning jooksutab tarkvarapakettides defineerituid teste ja kvaliteedikontrolle.
+
+\begin{figure}
+\inputminted[breaklines]{yaml}{chapters/data/ci.yaml}
+\caption{\emph{GitHub Actions tööplaan pidevaks integratsiooniks.}}\label{fig:ci-yaml}
+\end{figure}
+
+Pideva tarnimise teostamiseks kasutati jaotises \ref{subsubsec:deploy-rs} kirjeldatud tööriista \texttt{deploy-rs}. Joonis \ref{fig:deploy-rs-config} kirjeldab \texttt{deploy-rs} programmile antud tarnimiskonfiguratsiooni. Tarnimiskonfiguratsiooni jaoks vajalik avalik IP aadress on võetud OpenTofu taristu üles seadmise väljundist.
+
+\begin{figure}
+\inputminted[breaklines]{nix}{chapters/data/deploys.nix}
+\caption{\emph{Programmile \texttt{deploy-rs} edastatud konfiguratsioon.}}\label{fig:deploy-rs-config}
+\end{figure}
+
+Eelnevalt hangitud virtuaalmasinale tarniti joonises \ref{fig:ec2-config} kirjeldatud NixOS konfiguratsioon. 
+
+\begin{figure}
+\inputminted[breaklines]{nix}{chapters/data/ec2-config.nix}
+\caption{\emph{Virtuaalmasinale tarnitud NixOS konfiguratsioon.}}\label{fig:ec2-config}
+\end{figure}
+
+Joonis \ref{fig:cd-yaml} kirjeldab \texttt{.yaml} vormingus GitHub Actions tööplaani, mis seab üles Nixi paketihalduriga keskkonna ning tarnib NixOS konfiguratsiooni eelnevalt hangitud virtuaalmasinale.
+
+\begin{figure}
+\inputminted[breaklines]{yaml}{chapters/data/cd.yaml}
+\caption{\emph{GitHub Actions tööplaan pidevaks tarnimiseks.}}\label{fig:cd-yaml}
+\end{figure}
 

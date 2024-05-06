@@ -85,7 +85,7 @@ NixOS on Linuxi distributsioon, mis on Nixi paketihalduri peale ehitatud \cite{n
 
 Jaotis \ref{subsec:cicd} kirjeldab täpsemalt projekti tarnimise tarbeks kasutatud NixOS konfiguratsiooni.
 
-\subsubsection{deploy-rs}
+\subsubsection{deploy-rs}\label{subsubsec:deploy-rs}
 
 Deploy-rs on teek, mis hõlbustab NixOS konfiguratsioonide tarnimist hostidele. Tarnimisi defineeritakse Nixi programmeerimiskeeles kirjutatud spetsifikatsioonidega. Tarnimise viib ellu \texttt{deploy} nimeline käsureaprogramm \cite{deploy-rs}.
 
@@ -99,13 +99,13 @@ GitHub Actions on GitHubi platvormiga integreeritud CI/CD lahendus. GitHub Actio
 
 Jaotis \ref{subsec:cicd} kirjeldab täpsemalt üles seatud CI/CD konveierit.
 
-\subsection{OpenTofu}
+\subsection{OpenTofu}\label{subsec:opentofu}
 
 OpenTofu on Terraformi projekti \emph{fork}, mis pürgib jääda vabavaraliseks ka pärast algse projekti litsensivahetust \cite{opentofu-faq-why}. Mõlemad projektid võimaldavad defineerida taristut — nt virtuaalmasinaid ja muid pilvteenustarnijate pakutud teenuseid — lähtekoodina, ning siis seda käsureaprogrammiga üles seada või maha tirida.
 
 Autorid valisid OpenTofu, et hõlbustada virtuaalmasina üles seadmist NixOS operatsioonisüsteemiga. Autorid valisid selle Terraformi asemel, kuna nad eelistavad võimalusel kasutada vabavara, ning OpenTofu on kirjutamise ajal Terraformiga samaväärne \cite{opentofu-faq-terraform-replacement, opentofu-faq-state-file, opentofu-faq-providers}.
 
-\subsection{Amazon EC2}
+\subsection{Amazon EC2}\label{subsec:ec2}
 
 Amazon EC2 on pilvteenus, mis pakub vajadusele skaleeritavaid virtuaalmasina instantse. Autorid valisid Amazon EC2, et tarnida rakendust, kuna see täidab taskukohasuse nõuet, on laialdaselt kasutatud, ning selle jaoks on juba genereeritud NixOS toega \emph{Amazon Machine Image} (AMI) virtuaalmasinatõmmised \cite{nixos-amis}.
 
