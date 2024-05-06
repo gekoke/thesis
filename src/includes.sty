@@ -36,7 +36,8 @@
 \usepackage[sorting=none, backend=biber]{biblatex}                                        % For references
 \usepackage{csquotes}                                                                     % For references
 \addbibresource{references.bib}                                                           % Adds references file
-\usepackage[final]{microtype}                                                             % To prevent overfull hbox in \printbibliography - option 2
+
+\setcounter{biburlnumpenalty}{1000}                                                       % Prevent commit hashes overflowing margins in bibliography
 
 \usepackage{newtxtext,newtxmath}
 \setlength{\parindent}{0cm}
