@@ -1,5 +1,6 @@
 AMI
 Amazoni
+Bosk
 FastAPI
 GitHubi
 Gregor
@@ -7,6 +8,7 @@ Grigorjan
 Hunspelli
 Hunspellile
 IAIB
+LaTeXi
 Luberg
 Läbivtestimine
 Läbivtestimise
@@ -48,6 +50,8 @@ hunspell
 identiteet
 kasutajaliidese
 kasutajapoolne
+kasutajasõbralik
+kasutajasõbralikku
 korratavusgarantii
 korratavusgarantiid
 korratavusgarantiisid
@@ -62,8 +66,10 @@ mestitud
 nixos
 nixosmodule
 nixpkgs
+olemasolev
 paiked
 po
+programmaatiliselt
 provisionCertificates
 py
 pyproject
