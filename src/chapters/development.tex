@@ -117,7 +117,7 @@ Joonises \ref{fig:uml} on näidatud rakenduse lihtsustatud olemisuhtediagramm.
 
 \subsection{Vaadete loomine}
 
-Töö nõuete täitmiseks oli vajalik luua mitu vaadet, mis tagaks kasutajale võimaluse luua ning hallata teste ja testide malle (vt jaotis \ref{sec:functional-requirements}).
+Töö nõuete täitmiseks oli vajalik luua mitu vaadet, mis tagaks kasutajale võimaluse luua ning hallata töid ja tööde malle (vt jaotis \ref{sec:functional-requirements}).
 
 Rakendusele loodi järgnevad vaated:
 \begin{itemize}
@@ -130,10 +130,10 @@ Rakendusele loodi järgnevad vaated:
   \item malli detailide uuendamise vaade
   \item malli probleemi lisamise vaade
   \item malli probleemi uuendamise vaade
-  \item testi genereerimise vaade
-  \item testi salvestamise vaade
-  \item testide koondvaade
-  \item testi detailvaade
+  \item töö genereerimise vaade
+  \item töö salvestamise vaade
+  \item tööde koondvaade
+  \item töö detailvaade
   \item ülesande tüüpide koondvaade
   \item ülesande variandi alla laadimise vaade
   \item ülesande vastustelehe alla laadimise vaade
@@ -141,13 +141,13 @@ Rakendusele loodi järgnevad vaated:
 
 Rakenduse esmasel kasutusel saabub kasutaja sisselogimise vaatele. Sealt edasi on tal võimalik täita kasutajanime ja salasõna väljad ning rakendusse sisse logida. Juhul kui kasutajal puudub konto saab ta suunduda konto loomise vaatesse.
 
-Kui kasutaja on rakendusse sisse loginud suunatakse ta avalehele. Avalehel on kasutajal võimalik edasi liikuda mallide koondvaatesse, loodud testide koondvaatesse, testi genereerimise vaatesse või kuvada igat ülesandetüüpi. Lisaks on võimalik valida rakenduse kuvamise keelt ning rakendusest välja logida. Joonis \ref{fig:dashboard-view} kuvab rakenduse avalehte.
+Kui kasutaja on rakendusse sisse loginud suunatakse ta avalehele. Avalehel on kasutajal võimalik edasi liikuda mallide koondvaatesse, loodud tööde koondvaatesse, töö genereerimise vaatesse või kuvada igat ülesandetüüpi. Lisaks on võimalik valida rakenduse kuvamise keelt ning rakendusest välja logida. Joonis \ref{fig:dashboard-view} kuvab rakenduse avalehte.
 
 Malli koondvaates näeb kasutaja nimekirja olemasolevatest mallidest. Selles vaates on kasutajal võimalik luua uusi malle või kuvada olemasolevate mallide detaile. Malli detailvaates saab kasutaja hallata mallis olevaid probleeme. Joonis \ref{fig:template-details-view} kuvab malli detailvaadet.
 
-Testi genereerimise vaates saab kasutaja valida malli ning määrata variantide arvu. Vajutades \textit{genereeri} nuppu luuakse nii mitu testi varianti kui kasutaja määras. Seejärel saab kasutaja määrata testile nime ning selle salvestada. Joonis \ref{fig:test-generation-save-view} kuvab testi salvestamise vaadet peale seda kui test on genereeritud.
+Töö genereerimise vaates saab kasutaja valida malli ning määrata variantide arvu. Vajutades \textit{genereeri} nuppu luuakse nii mitu töö varianti kui kasutaja määras. Seejärel saab kasutaja määrata tööle nime ning selle salvestada. Joonis \ref{fig:test-generation-save-view} kuvab töö salvestamise vaadet peale seda kui töö on genereeritud.
 
-Avalehelt saab kasutaja liikuda testide koondvaatesse, kus kuvatakse kasutaja poolt loodud teste. Valides nimekirjast ühe testi kuvatakse selle testi variante ning vastustelehte, kus on kirjas iga variandi vastused. Vajutades variandile kuvatakse sellega seotud PDF faili, mida on võimalik kasutajal printida. Joonis \ref{fig:test-details-view} kuvav testi detailide vaadet.
+Avalehelt saab kasutaja liikuda tööde koondvaatesse, kus on kuvatud kasutaja poolt loodud tööd. Valides nimekirjast ühe töö kuvatakse selle töö variante ning vastuselehte, kus on kirjas iga variandi vastused. Vajutades variandile kuvatakse sellega seotud PDF faili, mida on võimalik kasutajal printida. Joonis \ref{fig:test-details-view} kuvab töö detailide vaadet.
 
 \begin{figure}[H]
     \centering
@@ -166,14 +166,14 @@ Avalehelt saab kasutaja liikuda testide koondvaatesse, kus kuvatakse kasutaja po
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{test_generation_save_view}
-    \caption{Testi salvestamise vaade.}
+    \caption{Töö salvestamise vaade.}
     \label{fig:test-generation-save-view}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{test_details_view}
-    \caption{Testi detailide vaade.}
+    \caption{Töö detailide vaade.}
     \label{fig:test-details-view}
 \end{figure}
 
