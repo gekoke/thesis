@@ -139,29 +139,42 @@ Rakendusele loodi järgnevad vaated:
   \item ülesande vastustelehe alla laadimise vaade
 \end{itemize}
 
-Joonis \ref{fig:dashboard_view} kuvab rakenduse avalehte. Joonis \ref{fig:template_details_view} kuvab malli detailvaadet. Joonis \ref{fig:test_generation_save_view} kuvab testi salvestamise vaadet peale seda kui test on genereeritud.
+Rakenduse esmasel kasutusel saabub kasutaja sisselogimise vaatele. Sealt edasi on tal võimalik täita kasutajanime ja salasõna väljad ning rakendusse sisse logida. Juhul kui kasutajal puudub konto saab ta suunduda konto loomise vaatesse.
 
-Rakenduse esmasel kasutusel saabub kasutaja sisselogimise vaatele. Sealt edasi on tal võimalik täita kasutajanime ja salasõna väljad ning rakendusse sisse logida.
+Kui kasutaja on rakendusse sisse loginud suunatakse ta avalehele. Avalehel on kasutajal võimalik edasi liikuda mallide koondvaatesse, loodud testide koondvaatesse, testi genereerimise vaatesse või kuvada igat ülesandetüüpi. Lisaks on võimalik valida rakenduse kuvamise keelt ning rakendusest välja logida. Joonis \ref{fig:dashboard-view} kuvab rakenduse avalehte.
+
+Malli koondvaates näeb kasutaja nimekirja olemasolevatest mallidest. Selles vaates on kasutajal võimalik luua uusi malle või kuvada olemasolevate mallide detaile. Malli detailvaates saab kasutaja hallata mallis olevaid probleeme. Joonis \ref{fig:template-details-view} kuvab malli detailvaadet.
+
+Testi genereerimise vaates saab kasutaja valida malli ning määrata variantide arvu. Vajutades \textit{genereeri} nuppu luuakse nii mitu testi varianti kui kasutaja määras. Seejärel saab kasutaja määrata testile nime ning selle salvestada. Joonis \ref{fig:test-generation-save-view} kuvab testi salvestamise vaadet peale seda kui test on genereeritud.
+
+Avalehelt saab kasutaja liikuda testide koondvaatesse, kus kuvatakse kasutaja poolt loodud teste. Valides nimekirjast ühe testi kuvatakse selle testi variante ning vastustelehte, kus on kirjas iga variandi vastused. Vajutades variandile kuvatakse sellega seotud PDF faili, mida on võimalik kasutajal printida. Joonis \ref{fig:test-details-view} kuvav testi detailide vaadet.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{dashboard_view}
-    \caption{Rakenduse avalehe vaade}
-    \label{fig:dashboard_view}
+    \caption{Rakenduse avalehe vaade.}
+    \label{fig:dashboard-view}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{templates_details_view}
-    \caption{Malli detailvaade}
-    \label{fig:template_details_view}
+    \caption{Malli detailvaade.}
+    \label{fig:template-details-view}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{test_generation_save_view}
-    \caption{Testi salvestamise vaade}
-    \label{fig:test_generation_save_view}
+    \caption{Testi salvestamise vaade.}
+    \label{fig:test-generation-save-view}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{test_details_view}
+    \caption{Testi detailide vaade.}
+    \label{fig:test-details-view}
 \end{figure}
 
 \subsection{Rakenduse testimine}
