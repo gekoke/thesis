@@ -80,6 +80,8 @@ nixos
 nixosmodule
 nixpkgs
 olemasolev
+olemasolevate
+olemasolevatest
 paiked
 pdf
 plantucolor
