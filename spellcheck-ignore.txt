@@ -10,6 +10,7 @@ Hunspelli
 Hunspellile
 HyperText
 IAIB
+IEC
 LaTeXi
 Luberg
 Läbivtestimine
@@ -32,6 +33,7 @@ SymPy
 Terraformi
 Terraformiga
 TestVersion
+UTF
 addProblem
 allauth
 autentimisvoogudes
@@ -58,14 +60,17 @@ hosti
 hostidele
 hunspell
 identiteet
-kasutajanime
 kasutajaliidese
+kasutajanime
 kasutajapoolne
 kasutajasõbralik
 kasutajasõbralikku
+kodeeringus
+kodeeringusse
 korratavusgarantii
 korratavusgarantiid
 korratavusgarantiisid
+latin
 litsensivahetust
 läbivteste
 läbivtestidega
