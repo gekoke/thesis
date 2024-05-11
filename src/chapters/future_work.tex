@@ -1,5 +1,17 @@
 Käesolev peatükk kirjeldab tehtud töö puudusi ja võimalike samme, et edendada käsitletud teemade edasist uurimist.
 
+\section{Ülesannete hulga laiendamine}
+
+Töö raames sai implementeeritud genereerimine vaid järgnevate ülesandeklasside jaoks:
+
+\begin{itemize}
+  \item lineaarvõrratused
+  \item ruutvõrratused
+  \item murdvõrratused
+\end{itemize}
+
+Tulemus vastab jaotises \ref{sec:functional-requirements} kirjeldatud nõutele. Sellegipoolest on otstarbekas tulevikus implementeerida veel riiklikus õppekavas olevaid ülesandeklasse. Selline toimimine võimaldab hinnata erinevate ülesandeklasside genereerimise kasutajasõbralikku liidesesse pakendamise võimalikust ning keerukust.
+
 \section{Vabavarasse panustamine}
 
 Jaotises \ref{subsec:hunspell} kirjeldati Hunspelli eestikeelse sõnastiku pakendamist. Paraku oli sõnastik aastast 2003 ning saadaval vaid \texttt{latin-1} (ISO/IEC 8859-1 kirjeldatud) ja \texttt{latin-9} (ISO/IEC 8859-15 kirjeldatud) kodeeringus. See tähendab, et sõnastiku ei tõlgendata korrektselt kui seda rakendada sisendteksti peale, mis on tänapäeval levinud \texttt{UTF-8} kodeeringus ning sisaldab tähti \texttt{š} või \texttt{ž}.
