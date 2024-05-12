@@ -91,6 +91,7 @@ paiked
 pdf
 plantucolor
 po
+printimiskõlblik
 problemKind
 programmaatiliselt
 provisionCertificates
