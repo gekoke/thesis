@@ -101,6 +101,60 @@ Rakendus toetab kolme ülesandetüüpi:
 
 \subsection{Andmemudelite loomine}
 
+Rakenduse funktsionaalsuste tagamiseks loodi vajaminevad andmemudelid. Käesolev peatükk kirjeldab mudelite tähtsusi ning tähendusi.
+
+\subsubsection{\emph{ProblemKind}}
+
+Mudel esitab probleemi tüüpi — näiteks lineaarvõrratust.
+
+Iga probleemi tüübiga on seostatud funktsioon, et seda tüüpi ülesannet (\emph{Problem} olemit) genereerida
+
+\subsubsection{\emph{Problem}}
+
+Mudel esitab ühte ülesannet.
+
+Väljad:
+\begin{itemize}
+  \item \emph{kind}: probleemi tüüp
+  \item \emph{definition}: ülesandepüstitus SymPy teegile arusaadava sõnena
+  \item \emph{solution}: ülesande lahendus SymPy teegile arusaadava sõnena
+\end{itemize}
+
+\subsubsection{\emph{Template}}
+
+Mall, mis koosneb \emph{ProblemKind} olemitest. Mall on mõeldud näite loomiseks, millest saaks töölehti genereerida.
+
+Väljad:
+\begin{itemize}
+  \item \emph{author}: malli omanik
+  \item \emph{name}: omanikult antud nimi mallile
+  \item \emph{title}: töölehe pealkiri, mis kuvatakse dokumendi päises
+\end{itemize}
+
+Mallist saab genereerida \emph{Test} olemi.
+
+\subsubsection{\emph{Test}}
+
+Olem, mis esitab töölehtede kollektsiooni. Töölehtede kollektsioon võib koosneda ühest või enamast töölehe variandist. Olemiga on seostatud kõikide variantide vastuseleht.
+
+Väljad:
+\begin{itemize}
+  \item \emph{author}: töö omanik
+  \item \emph{name}: omanikult antud nimi tööle
+  \item \emph{isSaved}: tõeväärtus — kas tööd peaks jäädavalt hoiustama ning haldamisvaadetes kuvama. Genereeritud tööd pole vaikimisi salvestatud.
+  \item \emph{answerKeyPdf}: viide vastuselehe dokumendifailile
+\end{itemize}
+
+\subsubsection{\emph{TestVersion}}
+
+Olem, mis esitab töölehte, ehk ühte töö varianti. Variandiga on seotud töölehe dokumendifail.
+Väljad:
+
+\begin{itemize}
+  \item \emph{versionNumber}: variandi number (nt \emph{Variant 1})
+  \item \emph{pdf}: viide töölehe dokumendifailile
+\end{itemize}
+
 \subsubsection{Olemisuhtediagramm}
 
 Joonises \ref{fig:uml} on näidatud rakenduse lihtsustatud olemisuhtediagramm.
