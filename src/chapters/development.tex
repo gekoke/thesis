@@ -70,7 +70,7 @@ Selline lahkheli tekkis versiooni uuendamisel: repositooriumis oli tarkvarapaket
 
 Vea parandamiseks avasid autorid tõmbekutse tarneahelas ülesvoolu projektis \texttt{dj-rest-auth}, mis parandas teste niiviisi, et nad töötaksid ka uue \texttt{django-allauth} versiooniga \cite{dj-rest-pr}.
 
-\subsection{Hunspell sõnastiku Nix pakendi loomine}
+\subsection{Hunspell sõnastiku Nix pakendi loomine}\label{subsec:hunspell}
 
 Hunspell on õigekirjakontrolli teostav programm, mida kasutavad Google Chrome, Mozilla Firefox, macOS, LibreOffice ja Thunderbird \cite{hunspell}.
 Käesoleval bakalaureusetööl õigekirjakontrolli arenduskeskkonnas ja pidevas integratsioonis rakendamise tarbeks pakendasid autorid Hunspellile eestikeelsed sõnastikud \cite{hunspell-pr}. Nixpkgs arhiivi tehtud tõmbekutse sisu kirjeldab joonis \ref{fig:hunspell-pr}.
@@ -137,6 +137,7 @@ Rakendusele loodi järgnevad vaated:
   \item ülesande tüüpide koondvaade
   \item ülesande variandi alla laadimise vaade
   \item ülesande vastustelehe alla laadimise vaade
+  \item tagasiside jagamise vaade
 \end{itemize}
 
 Rakenduse esmasel kasutusel saabub kasutaja sisselogimise vaatele. Sealt edasi on tal võimalik täita kasutajanime ja salasõna väljad ning rakendusse sisse logida. Juhul kui kasutajal puudub konto saab ta suunduda konto loomise vaatesse.
@@ -152,28 +153,28 @@ Avalehelt saab kasutaja liikuda tööde koondvaatesse, kus on kuvatud kasutaja p
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{dashboard_view}
-    \caption{Rakenduse avalehe vaade.}
+    \caption{\emph{Rakenduse avalehe vaade.}}
     \label{fig:dashboard-view}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{templates_details_view}
-    \caption{Malli detailvaade.}
+    \caption{\emph{Malli detailvaade.}}
     \label{fig:template-details-view}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{test_generation_save_view}
-    \caption{Töö salvestamise vaade.}
+    \caption{\emph{Töö salvestamise vaade.}}
     \label{fig:test-generation-save-view}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{test_details_view}
-    \caption{Töö detailide vaade.}
+    \caption{\emph{Töö detailide vaade.}}
     \label{fig:test-details-view}
 \end{figure}
 
