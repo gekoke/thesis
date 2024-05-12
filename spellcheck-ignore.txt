@@ -65,6 +65,7 @@ kasutajaliidese
 kasutajanime
 kasutajapoolne
 kasutajasõbralik
+kasutajasõbralike
 kasutajasõbralikku
 kodeeringus
 kodeeringusse
