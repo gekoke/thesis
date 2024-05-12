@@ -11,6 +11,7 @@ Hunspellile
 HyperText
 IAIB
 IEC
+LaTeX
 LaTeXi
 Luberg
 Läbivtestimine
@@ -92,6 +93,7 @@ pdf
 plantucolor
 po
 printimiskõlblik
+printimiskõlbulikud
 problemKind
 programmaatiliselt
 provisionCertificates
