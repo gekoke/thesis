@@ -8,7 +8,7 @@ _:
         texLiveEnvironment = pkgs.texliveBasic.withPackages (import ./tex-packages.nix);
 
         thesis = pkgs.stdenvNoCC.mkDerivation {
-          name = "thesis";
+          name = "grigorjan-poldsam-2024-bsc-thesis";
           src = ../../.;
 
           nativeBuildInputs = [
@@ -38,7 +38,7 @@ _:
 
           installPhase = ''
             mkdir -p $out
-            cp ./out/thesis.pdf $out
+            cp ./out/thesis.pdf $out/grigorjan-põldsam-2024-bakalaureusetöö.pdf
           '';
         };
       };
