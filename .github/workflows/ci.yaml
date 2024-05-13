@@ -11,7 +11,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.4
       - uses: DeterminateSystems/nix-installer-action@v10
-      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - uses: cachix/cachix-action@v14
+        with:
+          name: abiopetaja
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
       - name: Build thesis document
         run: nix build
       - name: Release
