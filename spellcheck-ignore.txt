@@ -1,3 +1,4 @@
+
 AMI
 Amazoni
 Bosk
@@ -21,6 +22,7 @@ Läbivtestimise
 Läbivtestkeskkonnas
 Lähiminevikus
 MVC
+Moodle
 NixOS
 Nixi
 Nixpkgs
@@ -144,4 +146,4 @@ versionNumber
 virtualiseeritud
 yaml
 yscale
-
+õpitaristut
