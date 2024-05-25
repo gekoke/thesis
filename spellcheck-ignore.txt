@@ -1,7 +1,9 @@
 AMI
 Amazoni
 Bosk
+Chromiumi
 FastAPI
+Firefoxist
 GitHubi
 Gregor
 Grigorjan
@@ -29,6 +31,7 @@ ProblemKind
 PyPI
 Pythoni
 Põldsam
+Safarist
 Sellegipoolest
 SymPy
 Terraformi
