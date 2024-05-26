@@ -19,6 +19,7 @@ Whichever tool you use, building also runs a spellcheck on the `.tex` files.
 
 ```sh
 direnv allow
+just clean
 cd src
 git-latexdiff --biber --xelatex --latexopt -shell-escape --main thesis.tex -o diff.pdf OLDGITREV
 ```
