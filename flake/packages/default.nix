@@ -14,8 +14,8 @@ _:
           p.ulem
         ]);
 
-        thesis = pkgs.stdenvNoCC.mkDerivation {
-          name = "baka_projekt_grigorjan_põldsam_abiõpetaja_kasutajasõbralik_rakendus_matemaatika_töölehtede_loomiseks_sympy_abil";
+        thesis = pkgs.stdenvNoCC.mkDerivation rec {
+          name = "baka_projekt_grigorjan_põldsam_abiõpetaja_rakendus_matemaatika_töölehtede_loomiseks_sympy_abil";
           src = ../../.;
 
           nativeBuildInputs = [
@@ -45,7 +45,7 @@ _:
 
           installPhase = ''
             mkdir -p $out
-            cp ./out/thesis.pdf $out/grigorjan-põldsam-2024-bakalaureusetöö.pdf
+            cp ./out/thesis.pdf $out/${name}.pdf
           '';
         };
       };
