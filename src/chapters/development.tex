@@ -170,9 +170,32 @@ Joonises \ref{fig:uml} on näidatud rakenduse lihtsustatud olemisuhtediagramm.
 \caption{\emph{Rakenduse olemisuhtediagramm.}}\label{fig:uml}
 \end{figure}
 
+\subsection{Kasutajavood}
+
+Rakenduse vaated peavad lubama kasutajal teostada põhitegevusi, mis on kirjeldatud kasutajavoogudena. Joonis \ref{fig:userflow} kuvab kasutajavoogusid.
+
+\subsubsection{Töölehe genereerimine}
+
+Rakenduse peamine kasutusvoog on töölehtede genereerimine. Kasutajal peab olema võimalik mallist genereerida tööleht ning peale seda kuvada töölehte või vastustelehte printimiseks. Juhul kui mall puudub peab kasutajal olema võimalik see luua.
+
+\subsubsection{Töölehe printimine}
+
+Kasutajal peab olema võimalik varasemalt genereeritud töölehti kuvada. Juhul kui kasutajal pole ühtegi töölehte salvestatud, peab ta saama seda genereerida.
+
+\subsubsection{Töölehe vastuste vaatamine}
+
+Kasutajal peab olema võimalik varasemalt genereeritud töölehtede vastuseid kuvada. Juhul kui kasutajal pole ühtegi töölehte salvestatud, peab ta saama seda genereerida.
+
+\begin{figure}
+\begin{adjustbox}{width=\textwidth}
+\includesvg{chapters/data/userflow.svg}
+\end{adjustbox}
+\caption{\emph{Kasutajavood.}}\label{fig:userflow}
+\end{figure}
+
 \subsection{Vaadete loomine}
 
-Töö nõuete täitmiseks oli vajalik luua mitu vaadet, mis tagaks kasutajale võimaluse luua ning hallata töid ja tööde malle (vt jaotis \ref{sec:functional-requirements}).
+Töö nõuete täitmiseks ning kasutajavoogude võimaldamiseks oli vajalik luua mitu vaadet, mis tagaks kasutajale võimaluse luua ning hallata töid ja tööde malle (vt jaotis \ref{sec:functional-requirements}).
 
 Rakendusele loodi järgnevad vaated:
 \begin{itemize}
