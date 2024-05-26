@@ -170,9 +170,32 @@ Joonises \ref{fig:uml} on näidatud rakenduse lihtsustatud olemisuhtediagramm.
 \caption{\emph{Rakenduse olemisuhtediagramm.}}\label{fig:uml}
 \end{figure}
 
+\subsection{Kasutajavood}
+
+Rakenduse vaated peavad lubama kasutajal teostada põhitegevusi, mis on kirjeldatud kasutajavoogudena. Joonis \ref{fig:userflow} kuvab kasutajavoogusid.
+
+\subsubsection{Töölehe genereerimine}
+
+Rakenduse peamine kasutusvoog on töölehtede genereerimine. Kasutajal peab olema võimalik mallist genereerida tööleht ning peale seda kuvada töölehte või vastustelehte printimiseks. Juhul kui mall puudub peab kasutajal olema võimalik see luua.
+
+\subsubsection{Töölehe printimine}
+
+Kasutajal peab olema võimalik varasemalt genereeritud töölehti kuvada. Juhul kui kasutajal pole ühtegi töölehte salvestatud, peab ta saama seda genereerida.
+
+\subsubsection{Töölehe vastuste vaatamine}
+
+Kasutajal peab olema võimalik varasemalt genereeritud töölehtede vastuseid kuvada. Juhul kui kasutajal pole ühtegi töölehte salvestatud, peab ta saama seda genereerida.
+
+\begin{figure}
+\begin{adjustbox}{width=\textwidth}
+\includesvg{chapters/data/userflow.svg}
+\end{adjustbox}
+\caption{\emph{Kasutajavood.}}\label{fig:userflow}
+\end{figure}
+
 \subsection{Vaadete loomine}
 
-Töö nõuete täitmiseks oli vajalik luua mitu vaadet, mis tagaks kasutajale võimaluse luua ning hallata töid ja tööde malle (vt jaotis \ref{sec:functional-requirements}).
+Töö nõuete täitmiseks ning kasutajavoogude teostamiseks oli vajalik luua mitu vaadet, mis tagaks kasutajale võimaluse luua ning hallata töid ja tööde malle (vt jaotis \ref{sec:functional-requirements}).
 
 Rakendusele loodi järgnevad vaated:
 \begin{itemize}
@@ -195,8 +218,6 @@ Rakendusele loodi järgnevad vaated:
   \item tagasiside jagamise vaade
 \end{itemize}
 
-Rakenduse vaated peavad lubama kasutajal teostada põhitegevusi, mis on kirjeldatud kasutajavoogudena. Joonis \ref{fig:userflow} kuvab kasutajavoogusid.
-
 Rakenduse esmasel kasutusel saabub kasutaja sisselogimise vaatele. Sealt edasi on tal võimalik täita kasutajanime ja salasõna väljad ning rakendusse sisse logida. Juhul kui kasutajal puudub konto saab ta suunduda konto loomise vaatesse.
 
 Kui kasutaja on rakendusse sisse loginud suunatakse ta avalehele. Avalehel on kasutajal võimalik edasi liikuda mallide koondvaatesse, loodud tööde koondvaatesse, töö genereerimise vaatesse või kuvada igat ülesandetüüpi. Lisaks on võimalik valida rakenduse kuvamise keelt ning rakendusest välja logida. Joonis \ref{fig:dashboard-view} kuvab rakenduse avalehte.
@@ -206,13 +227,6 @@ Malli koondvaates näeb kasutaja nimekirja olemasolevatest mallidest. Selles vaa
 Töö genereerimise vaates saab kasutaja valida malli ning määrata variantide arvu. Vajutades \textit{genereeri} nuppu luuakse nii mitu töö varianti kui kasutaja määras. Seejärel saab kasutaja määrata tööle nime ning selle salvestada. Joonis \ref{fig:test-generation-save-view} kuvab töö salvestamise vaadet peale seda kui töö on genereeritud.
 
 Avalehelt saab kasutaja liikuda tööde koondvaatesse, kus on kuvatud kasutaja poolt loodud tööd. Valides nimekirjast ühe töö kuvatakse selle töö variante ning vastuselehte, kus on kirjas iga variandi vastused. Vajutades variandile kuvatakse sellega seotud PDF faili, mida on võimalik kasutajal printida. Joonis \ref{fig:test-details-view} kuvab töö detailide vaadet.
-
-\begin{figure}
-\begin{adjustbox}{width=\textwidth}
-\includesvg{chapters/data/userflow.svg}
-\end{adjustbox}
-\caption{\emph{Kasutajavood.}}\label{fig:userflow}
-\end{figure}
 
 \begin{figure}[H]
     \centering
