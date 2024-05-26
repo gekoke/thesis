@@ -15,7 +15,7 @@ _:
         ]);
 
         thesis = pkgs.stdenvNoCC.mkDerivation {
-          name = "grigorjan-poldsam-2024-bsc-thesis";
+          name = "baka_projekt_grigorjan_põldsam_abiõpetaja_kasutajasõbralik_rakendus_matemaatika_töölehtede_loomiseks_sympy_abil";
           src = ../../.;
 
           nativeBuildInputs = [
