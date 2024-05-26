@@ -69,6 +69,9 @@ kasutajapoolne
 kasutajasõbralik
 kasutajasõbralike
 kasutajasõbralikku
+kasutajavood
+kasutajavoogudena
+kasutajavoogusid
 kodeeringus
 kodeeringusse
 korratavusgarantii
