@@ -7,6 +7,13 @@ _:
 
         texLiveEnvironment = pkgs.texliveBasic.withPackages (import ./tex-packages.nix);
 
+        texLiveDevEnvironment = pkgs.texliveBasic.withPackages (p: (import ./tex-packages.nix) p ++ [
+          p.git-latexdiff
+          p.latexdiff
+          p.latexpand
+          p.ulem
+        ]);
+
         thesis = pkgs.stdenvNoCC.mkDerivation {
           name = "grigorjan-poldsam-2024-bsc-thesis";
           src = ../../.;

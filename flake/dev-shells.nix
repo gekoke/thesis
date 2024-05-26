@@ -8,7 +8,7 @@
           pkgs.just
           pkgs.inkscape
           pkgs.python3Packages.pygments
-          self.packages.${system}.texLiveEnvironment
+          self.packages.${system}.texLiveDevEnvironment
           (pkgs.hunspellWithDicts [
             pkgs.hunspellDicts.et_EE
             pkgs.hunspellDicts.en_US
